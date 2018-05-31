@@ -1,0 +1,11 @@
+<span *ngIf="total > 0 && !customTemplate">
+    <strong>
+        <span>{{start}}</span> - <span>{{end}}</span>
+    </strong>
+    of
+    <strong>{{total}}</strong>
+     {{label}}
+</span>
+<ng-template [ngIf]="customTemplate">
+    <ng-content></ng-content>
+</ng-template>

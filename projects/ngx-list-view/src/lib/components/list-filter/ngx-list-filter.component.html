@@ -1,0 +1,22 @@
+<span dropdown>
+    <button type="button" class="btn btn-default dropdown-toggle" dropdownToggle>
+        <span>{{title}}</span>
+        <span *ngIf="itemsActive > 0">
+        ({{itemsActive}})
+        </span>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" *dropdownMenu>
+        <li *ngFor="let item of items">
+            <a>
+                <label>
+                    <input type="checkbox"
+                           [icheck]="false"
+                           (icheckChange)="rowChecked(item[value], $event)" />
+                    {{item[displayName]}}
+                </label>
+            </a>
+        </li>
+    </ul>
+</span>
+

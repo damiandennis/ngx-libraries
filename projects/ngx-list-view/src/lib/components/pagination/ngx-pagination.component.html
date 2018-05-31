@@ -1,0 +1,23 @@
+<ng-template [ngIf]="type === 'buttons'">
+    <nav *ngIf="pages.length > 1">
+            <div class="btn-group m-r-sm">
+                <button type="button" class="btn btn-white" (click)="onPrev()">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+
+                <button *ngFor="let page of pages" class="btn btn-white" [ngClass]="{active: page.active}" (click)="goToPage(page.value)">
+                    {{page.value}}
+                </button>
+
+                <button type="button" class="btn btn-white" (click)="onNext()">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+    </nav>
+</ng-template>
+<ng-template [ngIf]="type !== 'buttons' && pages.length > 1">
+    <ng-content></ng-content>
+    <select [(ngModel)]="page" (ngModelChange)="goToPage($event)">
+        <option *ngFor="let current of pages" [value]="current">{{current}}</option>
+    </select>
+</ng-template>

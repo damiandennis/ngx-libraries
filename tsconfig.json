@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-list-view": [
+        "dist/ngx-list-view"
+      ],
+      "ngx-yii2-rest": [
+        "dist/ngx-yii2-rest"
+      ]
+    }
   }
 }
