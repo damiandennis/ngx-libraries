@@ -1,13 +1,13 @@
-import isPrimitive from "./is.primative";
+import isPrimitive from './is.primative';
 
 /**
  * Converts an object to a parametrised string.
  * @param object
- * @returns {string}
+ * @returns string
  */
 export default function objectToParams(object: any) {
     return Object.keys(object).map((value) => {
-        let objectValue = encodeURIComponent(isPrimitive(object[value]) ? object[value] : JSON.stringify(object[value]));
+        const objectValue = encodeURIComponent(isPrimitive(object[value]) ? object[value] : JSON.stringify(object[value]));
         return `${value}=${objectValue}`;
-    }).join("&");
+    }).join('&');
 }

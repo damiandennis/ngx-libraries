@@ -1,6 +1,5 @@
-import {Component, Input, OnInit, EventEmitter, ViewChildren, QueryList} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, QueryList, ContentChildren} from '@angular/core';
 import {NgxIcheckDirective} from '../../directives/ngx-icheck.directive';
-import * as _ from 'lodash';
 
 @Component({
     selector: 'ngx-list-filter',
@@ -20,7 +19,7 @@ export class NgxListFilterComponent implements OnInit {
     };
     @Input() public checkedItems: any = {};
     @Input() public filterEmitter: EventEmitter<any>;
-    @ViewChildren(NgxIcheckDirective) public checkboxes: QueryList<NgxIcheckDirective>;
+    @ContentChildren(NgxIcheckDirective) public checkboxes: QueryList<NgxIcheckDirective>;
     public itemsActive = 0;
     public timeout: any;
     public menuShown = false;
@@ -55,16 +54,21 @@ export class NgxListFilterComponent implements OnInit {
         this.checkedItems[name] = event;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
-            let value = Object.keys(_.pickBy(<any>this.checkedItems, (value, key: any) => {
-                return value;
-            }));
-            this.filterEmitter.emit({
-                name: this.name,
-                value: value,
-                operator: 'IN'
-            });
-            this.itemsActive = value.length;
-        }, 1000);
+          const value = Object.keys(this.checkedItems)
+            .reduce((accum, key) => {
+              if (this.checkedItems[key]) {
+                accum.push(key);
+              }
+              return accum;
+            }, []);
+
+          this.filterEmitter.emit({
+              name: this.name,
+              value: value,
+              operator: 'IN'
+          });
+          this.itemsActive = value.length;
+      }, 1000);
 
     }
 

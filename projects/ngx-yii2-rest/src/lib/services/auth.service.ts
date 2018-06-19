@@ -50,7 +50,7 @@ export abstract class AuthService {
      *
      * @param key
      * @param value
-     * @returns {AuthService}
+     * @returns AuthService
      */
     public addHeader(key: string, value: string) {
         this._headers[key] = value;
@@ -62,7 +62,7 @@ export abstract class AuthService {
      *
      * @param username
      * @param password
-     * @returns {Observable<Response>}
+     * @returns Observable<Response>
      */
     public authenticate(username: string, password: string): Observable<Response> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -76,34 +76,32 @@ export abstract class AuthService {
         return this.http.post<any>(this.authUrl(), objectToParams(body), options);
     }
 
-    /**
-    * Fetches the data for the user.
-    *
-    * @returns {Observable<BaseModel|boolean>}
-    */
-    public async fetchSession(): Observable<BaseModel|boolean> {
+  /**
+   * Fetches the data for the user.
+   *
+   * @returns Observable<BaseModel|boolean>
+   */
+  public fetchSession(): Observable<BaseModel|boolean> {
+    const headers = new HttpHeaders(this._headers);
+    const options = { headers: headers };
+    const body = objectToParams(this.sessionParams());
+    const userDetails = this.http.get<any>(this.sessionUrl() + '?' + body, options);
+    return userDetails
+      .pipe(
+        map((data: any) => {
+          let user: BaseModel = null;
+          // Logged in?
+          if (data.id !== undefined) {
+            user = this.setIdentity(data);
+          } else {
+            user = false;
+            this.user.next(user);
+          }
 
-        const headers = new HttpHeaders(this._headers);
-        const options = { headers: headers };
-        const body = objectToParams(this.sessionParams());
-        const userDetails =  await this.http.get<any>(this.sessionUrl() + '?' + body, options);
-
-        return userDetails
-          .pipe(
-            map((data: any) => {
-              let user: BaseModel = null;
-              // Logged in?
-              if (data.id !== undefined) {
-                user = this.setIdentity(data);
-              } else {
-                user = false;
-                this.user.next(user);
-              }
-
-              return user;
-            })
-          );
-    }
+          return user;
+        })
+      );
+  }
 
     /**
      * The data that was fetched from the server.

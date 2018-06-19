@@ -196,6 +196,86 @@
           }
         }
       }
+    },
+    "ngx-simple-accordion": {
+      "root": "projects/ngx-simple-accordion",
+      "sourceRoot": "projects/ngx-simple-accordion/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-simple-accordion/tsconfig.lib.json",
+            "project": "projects/ngx-simple-accordion/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-simple-accordion/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-simple-accordion/src/test.ts",
+            "tsConfig": "projects/ngx-simple-accordion/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-simple-accordion/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-simple-accordion/tsconfig.lib.json",
+              "projects/ngx-simple-accordion/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-toastn": {
+      "root": "projects/ngx-toastn",
+      "sourceRoot": "projects/ngx-toastn/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-toastn/tsconfig.lib.json",
+            "project": "projects/ngx-toastn/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-toastn/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-toastn/src/test.ts",
+            "tsConfig": "projects/ngx-toastn/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-toastn/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-toastn/tsconfig.lib.json",
+              "projects/ngx-toastn/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-libraries"

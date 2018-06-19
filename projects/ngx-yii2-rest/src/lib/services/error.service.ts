@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class ErrorService {
@@ -29,10 +29,10 @@ export class ErrorService {
      * @param error
      */
     handleValidationResponse(error: any) {
-        let messages = error.json().map((item: any) => {
+        const messages = error.error.map((item: any) => {
             return item.message;
         });
-        alert(this.validationMessage + "\n\n \u2022 " + messages.join("\n \u2022 "));
+        alert(this.validationMessage + `\n\n \u2022 ` + messages.join(`\n \u2022 `));
     }
 
     /**
@@ -59,15 +59,16 @@ export class ErrorService {
      * @param error
      * @param useRouter
      * @param lastLocation
+     * @param excludeRouter
      */
-    response(error: any, useRouter: boolean = false, lastLocation: any = null) {
+    response(error: any, useRouter: boolean = false, lastLocation: any = null, excludeRouter: any = []) {
 
-        let queryParams = <any>{};
+        const queryParams = <any>{};
         if (lastLocation) {
             queryParams.lastLocation = lastLocation;
         }
 
-        if (useRouter) {
+        if (useRouter && excludeRouter.indexOf(error.status) === -1) {
             if (error.status) {
                 switch (error.status) {
                     case 422:
@@ -82,19 +83,25 @@ export class ErrorService {
                             queryParams: queryParams
                         });
                         break;
-                    default:
                     case 500:
-                        this.router.navigate([this.errorRoute], {
-                            skipLocationChange: true,
-                            queryParams: queryParams
-                        });
-                        break;
+                      console.error(error);
+                      this.router.navigate([this.errorRoute], {
+                          skipLocationChange: true,
+                          queryParams: queryParams
+                      });
+                      break;
+                    default:
+                      console.error(error);
+                      break;
                 }
             } else {
+              console.error(error);
+              if (excludeRouter.indexOf('no-status') === -1) {
                 this.router.navigate([this.errorRoute], {
-                    skipLocationChange: true,
-                    queryParams: queryParams
+                  skipLocationChange: true,
+                  queryParams: queryParams
                 });
+              }
             }
         } else {
             if (error.status) {

@@ -4,8 +4,7 @@ import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {BaseModel} from '../models/base.model';
 import isJsObject from '../utils/is.js.object';
-import * as _ from 'lodash';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 
 @Injectable()
 export abstract class EndPointService {
@@ -17,47 +16,36 @@ export abstract class EndPointService {
 
   /**
    * The number of items to show per page.
-   * @type {number}
    */
   public perPage = 20;
 
   /**
    * Current page index (perPage times the current offset)
-   *
-   * @type {number}
    */
   public page = 1;
 
   /**
    * The expandable relationships.
-   *
-   * @type {Array}
    */
   public expand: Array<string> = [];
 
   /**
    * The fields to select
-   *
-   * @type {Array}
    */
   public fields: Array<string> = [];
 
   /**
    * The filters to apply on the search.
-   *
-   * @type {Array}
    */
   public filters: Array<{name: string, value: string, operator?: string}> = [];
 
   /**
-   *
-   * @type {Array}
+   * The fields to sort by
    */
   public sort: Array<{key: string, direction: string}> = [];
 
   /**
    * Parameters that are allowed by setParam and addParam
-   * @type {Array}
    */
   public allowedParams: Array<string> = [
       'perPage',
@@ -70,8 +58,6 @@ export abstract class EndPointService {
 
   /**
    * The headers to send one each request.
-   * @type {Object}
-   * @private
    */
   public headers: {[key: string]: string} = {
       'Content-Type': 'application/json',
@@ -102,8 +88,7 @@ export abstract class EndPointService {
   /**
    * Sets the headers for most requests.
    *
-   * @returns {RequestOptions}
-   * @private
+   * @returns RequestOptions
    */
   public _headerOptions() {
       const headers = new HttpHeaders(this.headers);
@@ -126,7 +111,7 @@ export abstract class EndPointService {
    *
    * @param id
    * @param value
-   * @returns {EndPointService}
+   * @returns EndPointService
    */
   public setParam(id: string, value: any) {
       if (typeof this[id] === 'undefined' || this.allowedParams.indexOf(id) === -1) {
@@ -140,7 +125,7 @@ export abstract class EndPointService {
    * Adds a parameter onto an existing parameter if its an array.
    * @param id
    * @param value
-   * @returns {EndPointService}
+   * @returns EndPointService
    */
   public addParam(id: string, value: any) {
       if (this[id] !== undefined && Array.isArray(this[id])) {
@@ -154,7 +139,7 @@ export abstract class EndPointService {
    * Sets a group of parameters.
    *
    * @param params
-   * @returns {EndPointService}
+   * @returns EndPointService
    */
   public setParams(params: any) {
       Object.keys(params).map((id) => {
@@ -166,7 +151,7 @@ export abstract class EndPointService {
   /**
    * Fetches the current filters.
    *
-   * @returns {Array<{name: string, value: string, operator?: string}>}
+   * @returns Array<{name: string, value: string, operator?: string}>
    */
   public getFilters() {
       return this.filters;
@@ -175,7 +160,7 @@ export abstract class EndPointService {
   /**
    * Converts parameters set to a string that is to be sent to the server.
    *
-   * @returns {string}
+   * @returns string
    */
   public paramsToString() {
       const params = {
@@ -227,7 +212,7 @@ export abstract class EndPointService {
   /**
    * Fetches the endpoint url.
    *
-   * @returns {string}
+   * @returns string
    */
   protected fetchEndPoint() {
       return this.endPointUrl();
@@ -237,7 +222,7 @@ export abstract class EndPointService {
    * Fetches a single item.
    *
    * @param id
-   * @returns {Observable<Response>}
+   * @returns Observable<Response>
    */
   public fetchOne(id: number) {
       return this.http.get<any>(this.fetchEndPoint() + '/' + id + '?' + this.paramsToString(), this._headerOptions())
@@ -252,7 +237,7 @@ export abstract class EndPointService {
    * Deletes a single item
    * @param id
    * @param field
-   * @returns {Observable<Response>}
+   * @returns Observable<Response>
    */
   public deleteOne (id: number, field: string = null) {
       let httpUrl = this.fetchEndPoint() + '/' + id;
@@ -270,10 +255,10 @@ export abstract class EndPointService {
   public fetchResult(): any {
       return this.http.get(this.endPointUrl() + '?' + this.paramsToString(), this._headerOptions())
           .pipe(
-            map(res => {
+            map((res: any) => {
               return {
                   payload: res.map((row: any) => {
-                      return this.initModel(row);
+                    return this.initModel(row);
                   })
               };
             })
@@ -292,35 +277,33 @@ export abstract class EndPointService {
       url += '?' + this.paramsToString();
       const options = this._headerOptions();
       options['observe'] = 'response';
-      return this.http.get(url, this._headerOptions())
+      return this.http.get(url, options)
           .pipe(
-            map(res => {
+            map((res: HttpResponse<any>) => {
               if (payloadOnly) {
                   return res.body.map((row: any) => {
                       return this.initModel(row);
                   });
               } else {
-                  const data = res.body;
-                  const meta = _(res.headers.toJSON())
-                      .mapKeys((v: Array<any>, k: string) => {
-                          return (k.charAt(0).toLowerCase() + k.slice(1)).replace(/-/g, '');
-                      })
-                      .mapValues((v: Array<any>) => {
-                          return v.length === 1 ? v.pop() : v;
-                      })
-                      .assign({ // Added for backward compatibility.
-                          page: res.headers.get('X-Pagination-Current-Page'),
-                          pageCount: res.headers.get('X-Pagination-Page-Count'),
-                          totalCount: res.headers.get('X-Pagination-Total-Count'),
-                          perPage: res.headers.get('X-Pagination-Per-Page')
-                      })
-                      .value();
-                  return {
-                      meta: meta,
-                      payload: isJsObject(data)
-                          ? Object.keys(data).map((key: any) => this.initModel(data[key]))
-                          : data.map((row: any) => this.initModel(row))
-                  };
+                const data = res.body;
+                const meta = res.headers
+                  .keys()
+                  .reduce((accum, key) => {
+                    const newKey = (key.charAt(0).toLowerCase() + key.slice(1)).replace(/-/g, '');
+                    accum[newKey] = res.headers.get(key);
+                    return accum;
+                  }, {});
+                // Added for backward compatibility.
+                meta['page'] = res.headers.get('X-Pagination-Current-Page');
+                meta['pageCount'] = res.headers.get('X-Pagination-Page-Count');
+                meta['totalCount'] = res.headers.get('X-Pagination-Total-Count');
+                meta['perPage'] = res.headers.get('X-Pagination-Per-Page');
+                return {
+                    meta: meta,
+                    payload: isJsObject(data)
+                        ? Object.keys(data).map((key: any) => this.initModel(data[key]))
+                        : data.map((row: any) => this.initModel(row))
+                };
               }
             })
           );

@@ -10,7 +10,18 @@
     "e2e": "ng e2e",
     "build-list-view": "ng build --prod ngx-list-view",
     "pack-list-view": "cd dist/ngx-list-view && npm pack",
-    "package-list-view": "npm run build-list-view && npm run pack-list-view"
+    "package-list-view": "npm run build-list-view && npm run pack-list-view",
+    "build-yii2-rest": "ng build --prod ngx-yii2-rest",
+    "pack-yii2-rest": "cd dist/ngx-yii2-rest && npm pack",
+    "package-yii2-rest": "npm run build-yii2-rest && npm run pack-yii2-rest",
+    "build-simple-accordion": "ng build --prod ngx-simple-accordion",
+    "pack-simple-accordion": "cd dist/ngx-simple-accordion && npm pack",
+    "package-simple-accordion": "npm run build-simple-accordion && npm run pack-simple-accordion",
+    "build-toastn": "ng build --prod ngx-toastn",
+    "pack-toastn": "cd dist/ngx-toastn && npm pack",
+    "copy-toastn-css": "mkdir -p dist/ngx-toastn/css > /dev/null 2>&1 && cp projects/ngx-toastn/css/* dist/ngx-toastn/css",
+    "copy-toastn-img": "mkdir -p dist/ngx-toastn/img > /dev/null 2>&1 && cp projects/ngx-toastn/img/* dist/ngx-toastn/img",
+    "package-toastn": "npm run build-toastn && npm run copy-toastn-css && npm run copy-toastn-img && npm run pack-toastn"
   },
   "private": true,
   "dependencies": {
