@@ -4,12 +4,8 @@
 
 _A group of libraries for everyday angular usage.
 
-Documentation:
-
-1. [List View](https://github.com/damiandennis/ngx-libraries/docs/ngx-list-view)
-2. [Simple Accordion](https://github.com/damiandennis/ngx-libraries/docs/ngx-simple-accordion)
-3. [Toastn](https://github.com/damiandennis/ngx-libraries/docs/ngx-toastn)
-4. [Yii2 Rest](https://github.com/damiandennis/ngx-libraries/docs/ngx-yii2-rest)
+Some documentation has been added at https://damiandennis.github.io/ngx-libraries/
+There will be more work done to make this documentation more useful in the near future.
 
 > The MIT License (MIT)
 
