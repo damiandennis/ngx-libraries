@@ -1,11 +1,15 @@
 <img align="right" alt="angular logo" width="200" src="https://angular.io/assets/images/logos/angular/angular.svg">
 
-# Angular List View
+# Angular Libraries
 
-_A simple list view for viewing large result sets. Components include pagination, counter, preview and search filters. 
-The List View components was mainly used with bootstrap 3 however there are plans to make it work with other css frameworks._
+_A group of libraries for everyday angular usage.
 
-Documentation can be found at https://damiandennis.github.io/ngx-list-view/
+Documentation:
+
+1. [List View](https://github.com/damiandennis/ngx-libraries/docs/ngx-list-view)
+2. [Simple Accordion](https://github.com/damiandennis/ngx-libraries/docs/ngx-simple-accordion)
+3. [Toastn](https://github.com/damiandennis/ngx-libraries/docs/ngx-toastn)
+4. [Yii2 Rest](https://github.com/damiandennis/ngx-libraries/docs/ngx-yii2-rest)
 
 > The MIT License (MIT)
 
