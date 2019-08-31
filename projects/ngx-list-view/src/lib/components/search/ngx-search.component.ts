@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
 
@@ -29,6 +29,7 @@ export class NgxSearchComponent implements OnInit {
     public classes: Array<string> = ['form-control'];
     public searchInputControl: FormControl = new FormControl();
     @Input() public target: any;
+    @ViewChild('inputSearchRef', {static: false}) public inputSearchRef;
 
     ngOnInit() {
         // Subscribe to and debounce form control, emitting search results

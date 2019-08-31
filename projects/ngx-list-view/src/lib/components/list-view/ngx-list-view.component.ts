@@ -63,6 +63,7 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
   @Input() public activeRowEmitter = new EventEmitter();
   @Input() public loadMoreEmitter = new EventEmitter();
   @Input() public pageChangeScrollTop = false;
+  @Input() public transformData: (data: Array<any>) => Array<any>;
   @Output('handleRequestError') public handleRequestErrorEmitter = new EventEmitter();
   public filters: Array<ApiFilterInterface> = [];
   public currentPage = 1;
@@ -77,15 +78,15 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
    * Direct references to child components.
    */
   @ContentChildren(NgxCounterComponent) public counterComponents: QueryList<NgxCounterComponent>;
-  @ContentChild(NgxSearchComponent) public searchComponent: NgxSearchComponent;
+  @ContentChild(NgxSearchComponent, {static: false}) public searchComponent: NgxSearchComponent;
   @ContentChildren(NgxPaginationComponent) public paginationComponent: QueryList<NgxPaginationComponent>;
-  @ContentChild(NgxNotFoundComponent) public notFoundComponent: NgxNotFoundComponent;
-  @ContentChild(NgxNoResultsComponent) public noResultsComponent: NgxNoResultsComponent;
+  @ContentChild(NgxNotFoundComponent, {static: false}) public notFoundComponent: NgxNotFoundComponent;
+  @ContentChild(NgxNoResultsComponent, {static: false}) public noResultsComponent: NgxNoResultsComponent;
   @ContentChildren(NgxClearFiltersComponent) public clearFiltersComponent: QueryList<NgxClearFiltersComponent>;
   @ContentChildren(NgxListFilterComponent) public listFiltersComponent: QueryList<NgxListFilterComponent>;
   @ContentChildren(NgxDateFilterComponent) public dateFiltersComponent: QueryList<NgxDateFilterComponent>;
-  @ContentChild(NgxListPreviewComponent) public listPreviewComponent: NgxListPreviewComponent;
-  @ContentChild(NgxShowMoreComponent) public showMoreComponent: NgxShowMoreComponent;
+  @ContentChild(NgxListPreviewComponent, {static: false}) public listPreviewComponent: NgxListPreviewComponent;
+  @ContentChild(NgxShowMoreComponent, {static: false}) public showMoreComponent: NgxShowMoreComponent;
 
   public originalFilters: Array<ApiFilterInterface> = [];
   public dataSource: Observable<any>;
@@ -285,10 +286,15 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
           this.updating = false;
           this.meta = data.meta;
 
+          let payload = data.payload;
+          if (this.transformData !== undefined) {
+            payload = this.transformData(payload)
+          }
+
           if (append) {
-            this.rows = this.rows.concat(data.payload);
+            this.rows = this.rows.concat(payload);
           } else {
-            this.rows = data.payload;
+            this.rows = payload;
           }
 
           this.currentPage = data.meta.page;

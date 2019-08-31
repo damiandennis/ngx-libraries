@@ -6,7 +6,9 @@
         <a (click)="clearSearchTerm(true)" class="search-clear">
             <i class="fa fa-times fa-1x"></i>
         </a>
-        <input type="text" [ngClass]="classes"
+        <input #inputSearchRef
+               type="text"
+               [ngClass]="classes"
                placeholder="Search"
                [formControl]="searchInputControl" />
     </div>
