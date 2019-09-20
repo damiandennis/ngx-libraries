@@ -32,6 +32,9 @@
       ],
       "ngx-toastn": [
         "dist/ngx-toastn"
+      ],
+      "ngx-select-view": [
+        "dist/ngx-select-view"
       ]
     }
   }

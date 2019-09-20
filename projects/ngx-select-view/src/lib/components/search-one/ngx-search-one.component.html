@@ -1,0 +1,34 @@
+<div #listDisplayRef
+     class="select2-container"
+     [ngStyle]="{display: isBlock ? 'block' : 'inline'}"
+     [class.select2-dropdown-open]="!isSearchHidden"
+     [class.select2-drop-above]="!isSearchHidden && dropPosition == 'above'">
+    <a (click)="openSearch()"
+       class="select2-choice"
+       tabindex="-1">
+        <span class="select2-chosen">{{valueText}}</span>
+        <abbr class="select2-search-choice-close"></abbr>
+        <span class="select2-arrow" role="presentation">
+                <b role="presentation"></b>
+            </span>
+    </a>
+    <label [attr.for]="'list-one-' + id"
+           class="select2-offscreen">
+    </label>
+    <input class="select2-focusser select2-offscreen"
+           type="text"
+           aria-haspopup="true"
+           role="button"
+           aria-labelledby="select2-chosen-2"
+           [id]="'list-one-' + id">
+    <ngx-droplist [displayRef]="listDisplayRef"
+                [hasSearch]="true"
+                [placeholder]="placeholder"
+                [options]="options"
+                [value]="value"
+                (valueChange)="updateValue($event)"
+                [keyId]="keyId"
+                [valueId]="valueId"
+                [(dropPosition)]="dropPosition"
+    ></ngx-droplist>
+</div>

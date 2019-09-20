@@ -1,0 +1,67 @@
+<ng-template [ngIf]="!loading">
+
+    <!-- The hidden selector -->
+    <select #listRef
+            [ngModel]="keyList"
+            [multiple]="true">
+        <option *ngFor="let option of options"
+                [value]="option[keyId]">
+            {{option[valueId]}}
+        </option>
+    </select>
+
+    <!-- shown results -->
+    <div #listDisplayRef
+         class="select2-container select2-container-multi form-control"
+         [class.select2-dropdown-open]="!isSearchHidden"
+         [class.select2-drop-above]="!isSearchHidden && dropPosition == 'above'">
+
+        <ul (click)="openSearch()" class="select2-choices">
+            <li (click)="removeItem(i, $event)"
+                class="select2-search-choice"
+                *ngFor="let selection of valueList; let i = index">
+                <div>
+                    {{selection}}
+                </div>
+                <a href="#"
+                   (click)="$event.preventDefault()"
+                   class="select2-search-choice-close"
+                   tabindex="-1"
+                ></a>
+            </li>
+            <li class="select2-search-field">
+                <input type="text"
+                       autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       spellcheck="false"
+                       [placeholder]="value.length > 0 ? '' : placeholder"
+                       [style.width]="value.length > 0 ? '34px' : 'auto'"
+                       class="select2-input">
+            </li>
+        </ul>
+        <label [attr.for]="'list-one-' + id"
+               class="select2-offscreen">
+        </label>
+        <input class="select2-focusser select2-offscreen"
+               type="text"
+               aria-haspopup="true"
+               role="button"
+               aria-labelledby="select2-chosen-2"
+               [id]="'list-one-' + id">
+
+        <ngx-droplist [(isSearchHidden)]="isSearchHidden"
+                    [displayRef]="listDisplayRef"
+                    [hasSearch]="hasSearch"
+                    [placeholder]="placeholder"
+                    [options]="options"
+                    [value]="value"
+                    (valueChange)="updateValue($event)"
+                    [keyId]="keyId"
+                    [valueId]="valueId"
+                    [(dropPosition)]="dropPosition"
+        ></ngx-droplist>
+
+    </div>
+
+</ng-template>

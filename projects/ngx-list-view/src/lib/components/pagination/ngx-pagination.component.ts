@@ -27,7 +27,10 @@ export class NgxPaginationComponent implements OnChanges {
         this.goToPage(this.page + 1);
     }
 
-    public goToPage(page: number) {
+    public goToPage(page: number|string) {
+        if (page == '...' || page < 1 || page > this.pageCount) {
+          return;
+        }
         this.updating = true;
         this.changePageEmitter.emit(page);
     }

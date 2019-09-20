@@ -25,7 +25,11 @@
     "pack-toastn": "cd dist/ngx-toastn && npm pack",
     "copy-toastn-css": "mkdir -p dist/ngx-toastn/css > /dev/null 2>&1 && cp projects/ngx-toastn/css/* dist/ngx-toastn/css",
     "copy-toastn-img": "mkdir -p dist/ngx-toastn/img > /dev/null 2>&1 && cp projects/ngx-toastn/img/* dist/ngx-toastn/img",
-    "package-toastn": "npm run build-toastn && npm run copy-toastn-css && npm run copy-toastn-img && npm run pack-toastn"
+    "package-toastn": "npm run build-toastn && npm run copy-toastn-css && npm run copy-toastn-img && npm run pack-toastn",
+    "doc-select-view": "./node_modules/.bin/compodoc -p projects/ngx-select-view/tsconfig.lib.json --output ./docs/ngx-select-view --name ngx-select-view",
+    "build-select-view": "ng build --prod ngx-select-view",
+    "pack-select-view": "cd dist/ngx-select-view && npm pack",
+    "package-select-view": "npm run build-select-view && npm run pack-select-view"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +42,7 @@
     "@angular/platform-browser-dynamic": "^8.2.4",
     "@angular/router": "^8.2.4",
     "core-js": "^2.5.4",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.4.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
