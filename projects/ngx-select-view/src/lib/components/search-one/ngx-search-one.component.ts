@@ -17,8 +17,8 @@ export class NgxSearchOneComponent extends SelectAbstract implements ControlValu
 
     public dropPosition = "below";
 
-    @ViewChild("listRef", {static: false}) public listRef: ElementRef;
-    @ViewChild("listDisplayRef", {static: false}) public listDisplayRef: ElementRef;
+    @ViewChild("listRef") public listRef: ElementRef;
+    @ViewChild("listDisplayRef") public listDisplayRef: ElementRef;
     public propagateChange = (_: any) => {};
 
     public options: Array<any> = [];

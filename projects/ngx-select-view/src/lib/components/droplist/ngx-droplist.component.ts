@@ -23,9 +23,9 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class NgxDroplistComponent implements OnInit, AfterViewInit, OnChanges {
 
-    @ViewChild("listDropDownRef", {static: false}) public listDropDownRef: ElementRef;
-    @ViewChild("listSearchRef", {static: false}) public listSearchRef: ElementRef;
-    @ViewChild("searchControl", {static: false}) public searchControl: any;
+    @ViewChild("listDropDownRef") public listDropDownRef: ElementRef;
+    @ViewChild("listSearchRef") public listSearchRef: ElementRef;
+    @ViewChild("searchControl") public searchControl: any;
 
     public id: any;
     public window: Window;

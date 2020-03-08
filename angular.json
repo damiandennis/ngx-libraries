@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ngx-libraries",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -29,6 +30,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -132,7 +139,8 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-list-view/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ngx-list-view/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -172,7 +180,8 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-yii2-rest/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ngx-yii2-rest/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -212,7 +221,8 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-simple-accordion/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ngx-simple-accordion/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -252,7 +262,8 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-toastn/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ngx-toastn/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -292,7 +303,8 @@
           "configurations": {
             "production": {
               "project": "projects/select-view/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/select-view/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -332,7 +344,8 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-select-view/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ngx-select-view/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {

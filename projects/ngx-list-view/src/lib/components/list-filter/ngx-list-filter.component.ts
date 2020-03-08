@@ -18,7 +18,7 @@ export class NgxListFilterComponent implements OnInit {
         fetchAll: (id?: any, payloadOnly?: boolean) => any
     };
     @Input() public checkedItems: any = {};
-    @Input() public filterEmitter: EventEmitter<any>;
+    @Input() public filterEmitter: EventEmitter<any> = new EventEmitter<any>();
     @ContentChildren(NgxIcheckDirective) public checkboxes: QueryList<NgxIcheckDirective>;
     public itemsActive = 0;
     public timeout: any;

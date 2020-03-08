@@ -214,7 +214,7 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
   /**
    * Resets the data source back to default with filters if defined.
    *
-   * @param Array<ApiFilterInterface> filters
+   * @param filters
    */
   public resetDataSource(filters: Array<ApiFilterInterface> = null) {
     if (filters !== null) {

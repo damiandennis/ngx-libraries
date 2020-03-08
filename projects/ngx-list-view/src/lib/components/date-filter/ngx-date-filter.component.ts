@@ -9,7 +9,7 @@ export class NgxDateFilterComponent {
     @Input() public title: string;
     @Input() public name: string;
     public value = '';
-    @Input() public filterEmitter: EventEmitter<any>;
+    @Input() public filterEmitter: EventEmitter<any> = new EventEmitter<any>();
 
     public changeValue(value: string) {
         this.value = value;

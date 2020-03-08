@@ -17,7 +17,7 @@ export let providers = [
   providers: providers
 })
 export class NgxToastnModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<NgxToastnModule> {
     return {
       ngModule: NgxToastnModule,
       providers: providers

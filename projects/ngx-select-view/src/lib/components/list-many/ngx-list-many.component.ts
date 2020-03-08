@@ -29,8 +29,8 @@ export class NgxListManyComponent extends SelectAbstract implements ControlValue
     public dropPosition = "below";
     propagateChange = (_: any) => {};
 
-    @ViewChild("listRef", {static: false}) public listRef: ElementRef;
-    @ViewChild("listDisplayRef", {static: false}) public listDisplayRef: ElementRef;
+    @ViewChild("listRef") public listRef: ElementRef;
+    @ViewChild("listDisplayRef") public listDisplayRef: ElementRef;
 
     @Input() public keyId = "key";
     @Input() public valueId = "value";

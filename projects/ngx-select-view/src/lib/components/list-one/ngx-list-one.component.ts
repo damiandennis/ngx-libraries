@@ -24,8 +24,8 @@ export class NgxListOneComponent extends SelectAbstract implements ControlValueA
 
     public dropPosition = "below";
 
-    @ViewChild("listRef", {static: false}) public listRef: ElementRef;
-    @ViewChild("listDisplayRef", {static: false}) public listDisplayRef: ElementRef;
+    @ViewChild("listRef") public listRef: ElementRef;
+    @ViewChild("listDisplayRef") public listDisplayRef: ElementRef;
     public propagateChange = (_: any) => {};
 
     @Input() public options: Array<any> = [];
