@@ -15,7 +15,7 @@ export class NgxListPreviewComponent {
 
     @Input() public visibleEmitter = new EventEmitter();
     @Input() public dataEmitter = new EventEmitter();
-    @ContentChildren(NgxListFormResetDirective) forms: QueryList<NgxListFormResetDirective>;
+    @ContentChildren(NgxListFormResetDirective, {descendants: true}) forms: QueryList<NgxListFormResetDirective>;
 
     /**
      * Closes the list preview.

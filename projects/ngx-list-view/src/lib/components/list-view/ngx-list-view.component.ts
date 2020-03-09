@@ -77,14 +77,14 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
   /*
    * Direct references to child components.
    */
-  @ContentChildren(NgxCounterComponent) public counterComponents: QueryList<NgxCounterComponent>;
+  @ContentChildren(NgxCounterComponent, {descendants: true}) public counterComponents: QueryList<NgxCounterComponent>;
   @ContentChild(NgxSearchComponent, {static: false}) public searchComponent: NgxSearchComponent;
-  @ContentChildren(NgxPaginationComponent) public paginationComponent: QueryList<NgxPaginationComponent>;
+  @ContentChildren(NgxPaginationComponent, {descendants: true}) public paginationComponent: QueryList<NgxPaginationComponent>;
   @ContentChild(NgxNotFoundComponent, {static: false}) public notFoundComponent: NgxNotFoundComponent;
   @ContentChild(NgxNoResultsComponent, {static: false}) public noResultsComponent: NgxNoResultsComponent;
-  @ContentChildren(NgxClearFiltersComponent) public clearFiltersComponent: QueryList<NgxClearFiltersComponent>;
-  @ContentChildren(NgxListFilterComponent) public listFiltersComponent: QueryList<NgxListFilterComponent>;
-  @ContentChildren(NgxDateFilterComponent) public dateFiltersComponent: QueryList<NgxDateFilterComponent>;
+  @ContentChildren(NgxClearFiltersComponent, {descendants: true}) public clearFiltersComponent: QueryList<NgxClearFiltersComponent>;
+  @ContentChildren(NgxListFilterComponent, {descendants: true}) public listFiltersComponent: QueryList<NgxListFilterComponent>;
+  @ContentChildren(NgxDateFilterComponent, {descendants: true}) public dateFiltersComponent: QueryList<NgxDateFilterComponent>;
   @ContentChild(NgxListPreviewComponent, {static: false}) public listPreviewComponent: NgxListPreviewComponent;
   @ContentChild(NgxShowMoreComponent, {static: false}) public showMoreComponent: NgxShowMoreComponent;
 
@@ -288,7 +288,7 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
 
           let payload = data.payload;
           if (this.transformData !== undefined) {
-            payload = this.transformData(payload)
+            payload = this.transformData(payload);
           }
 
           if (append) {

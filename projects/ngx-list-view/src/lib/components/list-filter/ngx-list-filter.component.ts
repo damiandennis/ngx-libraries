@@ -19,7 +19,7 @@ export class NgxListFilterComponent implements OnInit {
     };
     @Input() public checkedItems: any = {};
     @Input() public filterEmitter: EventEmitter<any> = new EventEmitter<any>();
-    @ContentChildren(NgxIcheckDirective) public checkboxes: QueryList<NgxIcheckDirective>;
+    @ContentChildren(NgxIcheckDirective, {descendants: true}) public checkboxes: QueryList<NgxIcheckDirective>;
     public itemsActive = 0;
     public timeout: any;
     public menuShown = false;
