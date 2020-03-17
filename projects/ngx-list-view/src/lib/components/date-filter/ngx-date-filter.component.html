@@ -1,8 +1,7 @@
 
 <label>{{title}}</label>
 <input type="date"
-   class="form-control"
-   style="width:155px;display:inline-block"
+   [class]="classes"
    [ngModel]="value"
    (ngModelChange)="changeValue($event)"
 />

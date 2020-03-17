@@ -1,13 +1,15 @@
-import {Component, Input, EventEmitter} from '@angular/core';
+import {Component, Input, EventEmitter, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'ngx-date-filter',
-    templateUrl: 'ngx-date-filter.component.html'
+  selector: 'ngx-date-filter',
+  templateUrl: 'ngx-date-filter.component.html',
+  styleUrls: ['ngx-date-filter.component.scss']
 })
-export class NgxDateFilterComponent {
+export class NgxDateFilterComponent implements OnInit {
 
     @Input() public title: string;
     @Input() public name: string;
+    @Input() public classes: string;
     public value = '';
     @Input() public filterEmitter: EventEmitter<any> = new EventEmitter<any>();
 
@@ -19,5 +21,11 @@ export class NgxDateFilterComponent {
             operator: '='
         });
     }
+
+  ngOnInit(): void {
+      if (this.classes === undefined) {
+        this.classes = 'form-control date-filter'
+      }
+  }
 
 }
