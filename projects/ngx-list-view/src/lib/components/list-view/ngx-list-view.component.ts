@@ -190,7 +190,7 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
    */
   ngAfterContentInit() {
     // Sync data to child components
-    this.updateSubscriptions();
+    setTimeout(() => this.updateSubscriptions());
   }
 
   /**

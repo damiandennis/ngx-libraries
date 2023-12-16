@@ -1,14 +1,14 @@
 <img align="right" alt="angular logo" width="200" src="https://angular.io/assets/images/logos/angular/angular.svg">
 
-# Angular Yii2 REST
+# Angular REST
 
-This makes integration between yii2's rest interface and angular easy.
+This makes integration for a rest interface and angular easy.
 
-Documentation can be found at https://damiandennis.github.io/ngx-yii2-rest/
+Documentation can be found at https://damiandennis.github.io/ngx-rest/
 
 > The MIT License (MIT)
 
-> Copyright (c) 2015 Damian Dennis
+> Copyright (c) 2023 Damian Dennis
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
