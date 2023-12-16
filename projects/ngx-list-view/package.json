@@ -1,11 +1,14 @@
 {
   "name": "ngx-list-view",
-  "version": "0.2.3",
+  "version": "10.0.0",
   "peerDependencies": {
-    "@angular/common": "^9.0.0-rc.0 || ^9.0.0",
-    "@angular/core": "^9.0.0-rc.0 || ^9.0.0",
+    "@angular/common": "^10.0.0-rc.0 || ^10.0.0",
+    "@angular/core": "^10.0.0-rc.0 || ^10.0.0",
     "lodash": "^4.17.0",
     "rxjs": "^6.5.4"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   },
   "devDependencies": {}
 }
