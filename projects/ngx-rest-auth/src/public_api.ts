@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ngx-yii2-rest
+ * Public API Surface of ngx-rest-auth
  */
 
 export * from './lib/services/error.service';
