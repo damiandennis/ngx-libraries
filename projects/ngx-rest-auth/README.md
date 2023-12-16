@@ -1,6 +1,6 @@
 <img align="right" alt="angular logo" width="200" src="https://angular.io/assets/images/logos/angular/angular.svg">
 
-# Angular REST
+# Angular REST Auth
 
 This makes integration for a rest interface and angular easy.
 
