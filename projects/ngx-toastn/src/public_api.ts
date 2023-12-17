@@ -4,4 +4,5 @@
 
 export * from './lib/ngx-toastn.service';
 export * from './lib/ngx-toastn.component';
+export * from './lib/ngx-toast.component';
 export * from './lib/ngx-toastn.module';

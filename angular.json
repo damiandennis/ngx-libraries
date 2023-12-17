@@ -91,18 +91,6 @@
               "src/assets"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -115,15 +103,6 @@
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "ngx-libraries:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -154,18 +133,6 @@
             "tsConfig": "projects/ngx-list-view/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-list-view/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-list-view/tsconfig.lib.json",
-              "projects/ngx-list-view/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -194,18 +161,6 @@
             "main": "projects/ngx-rest-auth/src/test.ts",
             "tsConfig": "projects/ngx-rest-auth/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-rest-auth/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-rest-auth/tsconfig.lib.json",
-              "projects/ngx-rest-auth/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -236,18 +191,6 @@
             "tsConfig": "projects/ngx-simple-accordion/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-simple-accordion/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-simple-accordion/tsconfig.lib.json",
-              "projects/ngx-simple-accordion/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -277,18 +220,6 @@
             "tsConfig": "projects/ngx-toastn/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-toastn/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-toastn/tsconfig.lib.json",
-              "projects/ngx-toastn/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -317,18 +248,6 @@
             "main": "projects/ngx-select-view/src/test.ts",
             "tsConfig": "projects/ngx-select-view/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-select-view/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-select-view/tsconfig.lib.json",
-              "projects/ngx-select-view/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
