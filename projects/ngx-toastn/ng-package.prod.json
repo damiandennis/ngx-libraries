@@ -3,5 +3,6 @@
   "dest": "../../dist/ngx-toastn",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "assets": ["./css/*.*", "./img/*.*"]
 }
