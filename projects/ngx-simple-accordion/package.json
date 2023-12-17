@@ -1,11 +1,11 @@
 {
   "name": "ngx-simple-accordion",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": "^15.0.0-rc.0 || ^15.0.0",
-    "@angular/core": "^15.0.0-rc.0 || ^15.0.0"
+    "@angular/common": "^16.0.0-rc.0 || ^16.0.0",
+    "@angular/core": "^16.0.0-rc.0 || ^16.0.0"
   }
 }
