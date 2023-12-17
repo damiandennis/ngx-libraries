@@ -10,7 +10,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -35,6 +35,7 @@
       "ngx-select-view": [
         "dist/ngx-select-view"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   }
 }
