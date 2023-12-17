@@ -28,7 +28,7 @@ export class NgxPaginationComponent implements OnChanges {
     }
 
     public goToPage(page: number|string) {
-        if (page == '...' || page < 1 || page > this.pageCount) {
+        if (page === '...' || page as number < 1 || page as number > this.pageCount) {
           return;
         }
         this.updating = true;
