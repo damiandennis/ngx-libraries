@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NgxListViewComponent } from './ngx-list-view.component';
 
@@ -6,7 +6,7 @@ describe('NgxListViewComponent', () => {
   let component: NgxListViewComponent;
   let fixture: ComponentFixture<NgxListViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NgxListViewComponent ]
     })

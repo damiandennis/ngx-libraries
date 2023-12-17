@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseModel, EndPointService } from 'projects/ngx-rest/src/public_api';
+import { BaseModel, EndPointService } from 'projects/ngx-rest-auth/src/public_api';
 import { BehaviorSubject } from 'rxjs';
 
 export class UserModel extends BaseModel {}

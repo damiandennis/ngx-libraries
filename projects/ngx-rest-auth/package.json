@@ -1,9 +1,9 @@
 {
   "name": "ngx-rest-auth",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "peerDependencies": {
-    "@angular/common": "^10.0.0-rc.0 || ^10.0.0",
-    "@angular/core": "^10.0.0-rc.0 || ^10.0.0",
+    "@angular/common": "^11.0.0-rc.0 || ^11.0.0",
+    "@angular/core": "^11.0.0-rc.0 || ^11.0.0",
     "rxjs": "^6.5.4"
   }
 }
