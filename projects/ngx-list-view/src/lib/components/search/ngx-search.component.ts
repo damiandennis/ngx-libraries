@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, EventEmitter, Output, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
 
 @Component({
@@ -27,7 +27,7 @@ export class NgxSearchComponent implements OnInit {
     @Input() public debounceTime = 500;
     @Input() public isCustom = false;
     public classes: Array<string> = ['form-control'];
-    public searchInputControl: FormControl = new FormControl();
+    public searchInputControl: UntypedFormControl = new UntypedFormControl();
     @Input() public target: any;
     @ViewChild('inputSearchRef', {static: false}) public inputSearchRef;
 

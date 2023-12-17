@@ -252,6 +252,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-libraries"
+  }
 }
