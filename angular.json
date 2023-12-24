@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -121,9 +122,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-list-view/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-list-view/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-list-view/ng-package.prod.json",
+              "tsConfig": "projects/ngx-list-view/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -150,9 +151,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-rest-auth/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-rest-auth/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-rest-auth/ng-package.prod.json",
+              "tsConfig": "projects/ngx-rest-auth/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -179,9 +180,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-simple-accordion/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-simple-accordion/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-simple-accordion/ng-package.prod.json",
+              "tsConfig": "projects/ngx-simple-accordion/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -208,9 +209,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-toastn/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-toastn/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-toastn/ng-package.prod.json",
+              "tsConfig": "projects/ngx-toastn/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -237,9 +238,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-select-view/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-select-view/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-select-view/ng-package.prod.json",
+              "tsConfig": "projects/ngx-select-view/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {

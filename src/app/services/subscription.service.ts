@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseModel, EndPointService } from 'projects/ngx-rest-auth/src/public_api';
-import { BehaviorSubject } from 'rxjs';
 
-export class UserModel extends BaseModel {}
+export class SubscriptionModel extends BaseModel { }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class UserService extends EndPointService {
+export class SubscriptionService extends EndPointService {
 
   constructor(public httpClient: HttpClient) {
     super(httpClient);
@@ -18,21 +17,10 @@ export class UserService extends EndPointService {
     return 'id';
   }
   public initModel(data: any): BaseModel {
-    return new UserModel();
+    return new SubscriptionModel(data);
   }
   public endPointUrl(): string {
-    return 'dummy/test';
-  }
-
-  public fetchAll(): any {
-    return new BehaviorSubject({
-      meta: {},
-      payload: [
-        {
-          firstName: 'Damian'
-        }
-      ]
-    });
+    return '/v1/users/subscriptions';
   }
   
 }

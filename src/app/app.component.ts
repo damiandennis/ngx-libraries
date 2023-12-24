@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { UserService } from './services/user.service';
+import { UserPageService } from './services/user-page.service';
+import { UserMoreService } from './services/user-more.service';
+import 'bootstrap';
+import { SubscriptionService } from './services/subscription.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +10,12 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  constructor(public userService: UserService) {}
+
+  constructor(
+    public userPageService: UserPageService, 
+    public userMoreService: UserMoreService,
+    public subscriptionService: SubscriptionService) {
+    this.userPageService.setParam('perPage', 5);
+    this.userMoreService.setParam('perPage', 5);
+  }
 }

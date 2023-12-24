@@ -10,6 +10,8 @@ export class NgxPaginationComponent implements OnChanges {
     @Input() public type = 'buttons';
     @Input() public page = 1;
     @Input() public pageCount = 1;
+    @Input() public buttonClass = '';
+    @Input() public buttonWrapperClass = '';
     public pages: Array<any> = [];
     public updating = false;
 

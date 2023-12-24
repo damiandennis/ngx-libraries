@@ -1,6 +1,153 @@
-<ngx-list-view #list [dataService]='userService'>
-  <ngx-pagination></ngx-pagination>
-  <div *ngFor='let row of list.rows'>
-    {{row.firstName}}
+<div class="row m-5">
+  <div class="col-6">
+    <h2 class="text-center mb-5">List View (Pagination with Filters)</h2>
+    <ngx-list-view #listRef [dataService]="userPageService">
+      <div class="d-flex justify-content-between">
+        <div class="d-flex flex-grow-1 pe-5">
+          <ngx-search class="flex-grow-1" placeholder="Search for first or last name"></ngx-search>
+        </div>
+        <ngx-list-filter class="me-1" #listFilterRef 
+          [dataService]="subscriptionService" 
+          filterName="subscription"
+          listTitle="Tiers"
+          objectLabel="tierName" 
+          objectValue="tierId">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span>{{listFilterRef.listTitle}}</span>&nbsp;
+              <span *ngIf="listFilterRef.itemsActive > 0">({{listFilterRef.itemsActive}})</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="listFilter">
+              <li *ngFor="let item of listFilterRef.items">
+                <a class="dropdown-item" href="#">
+                  <label>
+                    <input class="form-check-input" 
+                      type="checkbox" 
+                      [ngModel]="false" 
+                      (ngModelChange)="listFilterRef.rowChecked(item[listFilterRef.objectValue], $event)" 
+                    />
+                    {{item[listFilterRef.objectLabel]}}
+                  </label>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ngx-list-filter>
+        <ngx-date-filter title="Filter Birthday" name="birthday"></ngx-date-filter>
+      </div>
+      <div class="mt-2 mb-3 d-flex justify-content-between">
+        <div>
+          <div class="spinner-border spinner-border-sm" role="status" *ngIf="listRef.loading || listRef.updating">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <ngx-clear-filters #clearFiltersRef>
+          <a href="#" (click)="clearFiltersRef.clear()">
+            <small>clear filters</small>
+          </a>
+        </ngx-clear-filters>
+      </div>
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <table class="table table-dark table-striped mb-3">
+            <thead>
+              <tr>
+                <th scope="col">Avatar</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Sex</th>
+                <th scope="col" class="text-center">Subscription</th>
+                <th scope="col" class="text-end">Birthday</th>
+                <th scope="col" class="text-end"></th>
+              </tr>
+            </thead> 
+            <tbody>
+              <tr *ngFor="let row of listRef.rows" (click)="listRef.setActiveRow(row, $event)" role="button">
+                <td scope="row"><img width="50" height="50" [src]="row.avatar" /></td>
+                <td>{{row.firstName}}</td>
+                <td>{{row.lastName}}</td>
+                <td>{{row.sex}}</td>
+                <td class="text-center">{{row.subscriptionTier}}</td>
+                <td class="text-end">{{row.birthday | date}}</td>
+                <td class="text-end">
+                  @if (listRef.isActiveRow(row)) {
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+                  } @else {
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>  
+                  }  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ngx-list-preview class="d-block ms-2" #listPreviewRef>
+          <table class="table table-dark table-striped w-100" *ngIf="!listRef.previewHidden">
+            <tbody>
+              <tr>
+                <td scope="row" colspan="2">
+                  <img width="300" [src]="listPreviewRef.data?.avatar" />
+                </td>  
+              </tr>
+              <tr>
+                <th scope="col" class="text-end">First Name:</th>
+                <td scope="row">{{listPreviewRef.data?.firstName}}</td>  
+              </tr>
+              <tr>
+                <th scope="col" class="text-end">Last Name:</th>
+                <td scope="row">{{listPreviewRef.data?.lastName}}</td>  
+              </tr>
+              <tr>
+                <th scope="col" class="text-end">Sex:</th>
+                <td scope="row">{{listPreviewRef.data?.sex}}</td>  
+              </tr>
+              <tr>
+                <th scope="col" class="text-end">Subscription:</th>
+                <td scope="row">{{listPreviewRef.data?.subscriptionTier}}</td>  
+              </tr>
+              <tr>
+                <th scope="col" class="text-end">Birthday:</th>
+                <td scope="row">{{listPreviewRef.data?.birthday | date}}</td>  
+              </tr>
+            </tbody>
+          </table>
+        </ngx-list-preview>
+      </div>
+      <div class="d-flex justify-content-between">
+        <ngx-pagination buttonWrapperClass="btn-group" buttonClass="btn btn-secondary"></ngx-pagination>
+        <ngx-counter label="users"></ngx-counter>
+      </div>
+      <ngx-no-results>No results were found.</ngx-no-results>
+      <ngx-not-found>Nothing was found with that search criteria.</ngx-not-found>
+    </ngx-list-view>
   </div>
-</ngx-list-view>
+</div>
+<div class="row m-5">
+  <div class="col-6">
+    <h2 class="text-center mb-5">List View (Show More)</h2>
+    <ngx-list-view #listRefShowMore [dataService]="userMoreService">
+      <table class="table table-striped table-dark mb-3">
+        <thead>
+          <tr>
+            <th>Avatar</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Sex</th>
+            <th class="text-end">Birthday</th>
+          </tr>  
+        </thead>
+        <tbody>
+          <tr *ngFor='let row of listRefShowMore.rows'>
+            <td><img width="50" height="50" [src]="row.avatar" /></td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>{{row.sex}}</td>
+            <td class="text-end">{{row.birthday | date}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ngx-show-more>Show More</ngx-show-more>
+      <ngx-no-results>No results were found.</ngx-no-results>
+      <ngx-not-found>Nothing was found with that search criteria.</ngx-not-found>
+    </ngx-list-view>
+  </div>
+</div>

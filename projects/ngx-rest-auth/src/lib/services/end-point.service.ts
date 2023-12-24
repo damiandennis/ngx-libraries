@@ -1,5 +1,4 @@
 import objectToParams from '../utils/object.to.params';
-import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {BaseModel} from '../models/base.model';
@@ -293,6 +292,7 @@ export abstract class EndPointService {
                     accum[newKey] = res.headers.get(key);
                     return accum;
                   }, {});
+                console.log({meta, data});
                 // Added for backward compatibility.
                 meta['page'] = res.headers.get('X-Pagination-Current-Page');
                 meta['pageCount'] = res.headers.get('X-Pagination-Page-Count');

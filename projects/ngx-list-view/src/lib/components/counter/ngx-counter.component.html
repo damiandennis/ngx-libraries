@@ -6,6 +6,6 @@
     <strong>{{total}}</strong>
      {{label}}
 </span>
-<ng-template [ngIf]="customTemplate">
+<ng-template [ngIf]="customTemplate && total > 0">
     <ng-content></ng-content>
 </ng-template>

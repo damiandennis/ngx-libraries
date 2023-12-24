@@ -7,6 +7,8 @@ import { NgxSelectViewModule } from 'projects/ngx-select-view/src/public_api';
 import { AccordionModule } from 'projects/ngx-simple-accordion/src/public_api';
 import { NgxToastnModule } from 'projects/ngx-toastn/src/public_api';
 import { HttpClientModule } from '@angular/common/http';
+import { fakeBackendProvider } from './interceptors/fake-backend-http.interceptor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     NgxListViewModule,
     NgxSelectViewModule,
     AccordionModule,
-    NgxToastnModule
+    NgxToastnModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

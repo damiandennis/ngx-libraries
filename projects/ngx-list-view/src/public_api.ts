@@ -14,5 +14,4 @@ export * from './lib/components/pagination/ngx-pagination.component';
 export * from './lib/components/search/ngx-search.component';
 export * from './lib/components/show-more/ngx-show-more.component';
 export * from './lib/directives/ngx-list-form-reset.directive';
-export * from './lib/directives/ngx-icheck.directive';
 export * from './lib/ngx-list-view.module';

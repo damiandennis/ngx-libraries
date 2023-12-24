@@ -244,8 +244,11 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
   public applyFilters(append: boolean = false) {
     // Apply filters to data service
     this.updating = true;
+    if (!append) {
+      this.dataSource = this.dataService
+      .setParam('page', 1);
+    }
     this.dataSource = this.dataService
-      .setParam('page', 1)
       .setParam('filters', this.filters)
       .fetchAll();
     this.updateSubscriptions(append);
@@ -269,6 +272,9 @@ export class NgxListViewComponent implements OnInit, AfterContentInit {
     }
     if (this.listFiltersComponent) {
       this.listFiltersComponent.forEach((component) => component.reset());
+    }
+    if (this.dateFiltersComponent) {
+      this.dateFiltersComponent.forEach((component) => component.reset());
     }
 
     // Reapply filters

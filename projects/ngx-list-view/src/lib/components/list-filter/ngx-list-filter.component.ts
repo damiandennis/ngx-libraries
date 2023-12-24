@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, EventEmitter, QueryList, ContentChildren} from '@angular/core';
-import {NgxIcheckDirective} from '../../directives/ngx-icheck.directive';
+import { NgModel } from '@angular/forms';
 
 @Component({
     selector: 'ngx-list-filter',
@@ -7,11 +7,11 @@ import {NgxIcheckDirective} from '../../directives/ngx-icheck.directive';
 })
 export class NgxListFilterComponent implements OnInit {
 
-    @Input() public title = '';
-    @Input() public name = '';
+    @Input() public listTitle = '';
+    @Input() public filterName = '';
     @Input() public items: Array<any> = [];
-    @Input() public displayName = 'label';
-    @Input() public value = 'value';
+    @Input() public objectLabel = 'label';
+    @Input() public objectValue = 'value';
     @Input() public dataService: {
         getFilters: () => Array<any>,
         setParam: (name: string, filters: any) => any,
@@ -19,19 +19,19 @@ export class NgxListFilterComponent implements OnInit {
     };
     @Input() public checkedItems: any = {};
     @Input() public filterEmitter: EventEmitter<any> = new EventEmitter<any>();
-    @ContentChildren(NgxIcheckDirective, {descendants: true}) public checkboxes: QueryList<NgxIcheckDirective>;
+    @ContentChildren(NgModel, {descendants: true}) public modelCheckboxes: QueryList<NgModel>;
     public itemsActive = 0;
     public timeout: any;
-    public menuShown = false;
 
     public ngOnInit() {
-
         // If data is specified and items is empty fetch and fill.
         if (this.dataService) {
             this.dataService
                 .fetchAll()
                 .subscribe((data: any) => {
                     this.items = data.payload;
+                }, (err) => {
+                    console.error(err);
                 });
         }
     }
@@ -39,8 +39,8 @@ export class NgxListFilterComponent implements OnInit {
     public reset() {
         this.itemsActive = 0;
         this.checkedItems = {};
-        this.checkboxes.forEach((item) => {
-            item.unCheck();
+        this.modelCheckboxes.forEach((item) => {
+            item.control.setValue(false, {emitViewToModelChange: false});
         });
     }
 
@@ -63,27 +63,13 @@ export class NgxListFilterComponent implements OnInit {
             }, []);
 
           this.filterEmitter.emit({
-              name: this.name,
-              value: value,
+              name: this.filterName,
+              value,
               operator: 'IN'
           });
           this.itemsActive = value.length;
       }, 1000);
 
-    }
-
-    public toggleClickMenu(e: Event) {
-        e.stopPropagation();
-        e.preventDefault();
-        this.menuShown = !this.menuShown;
-    }
-
-    public closeMenu(e: Event) {
-        this.menuShown = false;
-    }
-
-    public showDropDown() {
-        return this.menuShown ? 'block' : 'hide';
     }
 
 }

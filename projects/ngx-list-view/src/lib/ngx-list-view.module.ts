@@ -9,7 +9,6 @@ import {NgxSearchComponent} from './components/search/ngx-search.component';
 import {NgxPaginationComponent} from './components/pagination/ngx-pagination.component';
 import {NgxShowMoreComponent} from './components/show-more/ngx-show-more.component';
 import {NgxNoResultsComponent} from './components/no-results/ngx-no-results.component';
-import {NgxIcheckDirective} from './directives/ngx-icheck.directive';
 import {NgxListFilterComponent} from './components/list-filter/ngx-list-filter.component';
 import {NgxListFormResetDirective} from './directives/ngx-list-form-reset.directive';
 import {NgxDateFilterComponent} from './components/date-filter/ngx-date-filter.component';
@@ -31,7 +30,6 @@ import {CommonModule} from '@angular/common';
     NgxPaginationComponent,
     NgxSearchComponent,
     NgxShowMoreComponent,
-    NgxIcheckDirective,
     NgxListFilterComponent,
     NgxDateFilterComponent,
     NgxListFormResetDirective
