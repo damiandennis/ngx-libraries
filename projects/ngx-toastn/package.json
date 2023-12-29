@@ -1,8 +1,8 @@
 {
   "name": "ngx-toastn",
-  "version": "17.0.1",
+  "version": "17.0.2",
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "@angular/common": "^17.0.0-rc.0 || ^17.0.0",

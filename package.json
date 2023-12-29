@@ -1,6 +1,6 @@
 {
   "name": "ngx-libraries",
-  "version": "17.0.1",
+  "version": "17.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,7 +27,9 @@
     "doc-select-view": "./node_modules/.bin/compodoc -p projects/ngx-select-view/tsconfig.lib.json --output ./docs/ngx-select-view --name ngx-select-view",
     "build-select-view": "ng build --configuration production ngx-select-view",
     "pack-select-view": "cd dist/ngx-select-view && npm pack",
-    "package-select-view": "npm run build-select-view && npm run pack-select-view"
+    "package-select-view": "npm run build-select-view && npm run pack-select-view",
+    "package-all": "npm run package-rest-auth && npm run package-toastn && npm run package-select-view && npm run package-simple-accordion && npm run package-list-view",
+    "publish-all": "npm publish ./dist/ngx-rest-auth && npm publish ./dist/ngx-toastn && npm publish ./dist/ngx-select-view && npm publish ./dist/ngx-simple-accordion && npm publish ./dist/ngx-list-view"
   },
   "private": true,
   "dependencies": {
@@ -40,9 +42,8 @@
     "@angular/platform-browser-dynamic": "^17.0.7",
     "@angular/router": "^17.0.7",
     "bootstrap": "^5.3.2",
-    "core-js": "^3.6.4",
-    "rxjs": "^6.5.4",
-    "tslib": "^2.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
