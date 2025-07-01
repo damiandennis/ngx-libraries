@@ -3,7 +3,8 @@ import { NgModel } from '@angular/forms';
 
 @Component({
     selector: 'ngx-list-filter',
-    templateUrl: 'ngx-list-filter.component.html'
+    templateUrl: 'ngx-list-filter.component.html',
+    standalone: false
 })
 export class NgxListFilterComponent implements OnInit {
 

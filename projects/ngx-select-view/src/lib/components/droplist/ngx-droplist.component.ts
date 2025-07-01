@@ -19,7 +19,8 @@ import {debounceTime} from 'rxjs/operators';
 @Component({
     selector: "ngx-droplist",
     templateUrl: "ngx-droplist.component.html",
-    styleUrls: ["ngx-droplist.component.css"]
+    styleUrls: ["ngx-droplist.component.css"],
+    standalone: false
 })
 export class NgxDroplistComponent implements OnInit, AfterViewInit, OnChanges {
 

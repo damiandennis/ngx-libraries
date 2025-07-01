@@ -3,7 +3,8 @@ import {Input} from '@angular/core';
 
 @Component({
     selector: 'ngx-no-results',
-    templateUrl: 'ngx-no-results.component.html'
+    templateUrl: 'ngx-no-results.component.html',
+    standalone: false
 })
 export class NgxNoResultsComponent {
     @Input() classes: Object = 'alert alert-warning text-center';

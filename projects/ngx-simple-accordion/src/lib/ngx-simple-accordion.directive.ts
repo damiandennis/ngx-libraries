@@ -1,9 +1,10 @@
 import {Directive, ElementRef, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 @Directive({
-  // tslint:disable-next-line directive-selector
-  selector: '[ngx-simple-accordion]',
-  exportAs: 'accordion'
+    // tslint:disable-next-line directive-selector
+    selector: '[ngx-simple-accordion]',
+    exportAs: 'accordion',
+    standalone: false
 })
 export class NgxSimpleAccordionDirective implements OnInit {
 

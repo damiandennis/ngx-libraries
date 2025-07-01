@@ -11,9 +11,10 @@ import { NgxToastnService, ToastData, ToastyConfig, ToastyEvent, ToastyEventType
  * Toasty is container for Toast components
  */
 @Component({
-  // tslint:disable-next-line component-selector
-  selector: 'ngx-toastn',
-  templateUrl: 'ngx-toastn.component.html'
+    // tslint:disable-next-line component-selector
+    selector: 'ngx-toastn',
+    templateUrl: 'ngx-toastn.component.html',
+    standalone: false
 })
 export class NgxToastnComponent implements OnInit {
   /**

@@ -19,7 +19,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
             useExisting: forwardRef(() => NgxListManyComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class NgxListManyComponent extends SelectAbstract implements ControlValueAccessor {
 

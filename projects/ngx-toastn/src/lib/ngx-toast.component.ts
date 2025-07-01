@@ -10,8 +10,9 @@ import { ToastData } from './ngx-toastn.service';
  * A Toast component shows message with title and close button.
  */
 @Component({
-  selector: 'ngx-toast',
-  templateUrl: 'ngx-toast.component.html'
+    selector: 'ngx-toast',
+    templateUrl: 'ngx-toast.component.html',
+    standalone: false
 })
 export class NgxToastComponent {
 

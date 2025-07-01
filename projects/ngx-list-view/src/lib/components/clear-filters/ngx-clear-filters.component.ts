@@ -5,7 +5,8 @@ import {ApiFilterInterface} from '../../interfaces/api-filter.interface';
 
 @Component({
     selector: 'ngx-clear-filters',
-    templateUrl: 'ngx-clear-filters.component.html'
+    templateUrl: 'ngx-clear-filters.component.html',
+    standalone: false
 })
 export class NgxClearFiltersComponent {
 

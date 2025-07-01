@@ -6,7 +6,8 @@ import {NgxListFormResetDirective} from '../../directives/ngx-list-form-reset.di
 
 @Component({
     selector: 'ngx-list-preview',
-    templateUrl: 'ngx-list-preview.component.html'
+    templateUrl: 'ngx-list-preview.component.html',
+    standalone: false
 })
 export class NgxListPreviewComponent {
 

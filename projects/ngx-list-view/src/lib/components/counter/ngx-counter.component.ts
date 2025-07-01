@@ -2,7 +2,8 @@ import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'ngx-counter',
-    templateUrl: 'ngx-counter.component.html'
+    templateUrl: 'ngx-counter.component.html',
+    standalone: false
 })
 export class NgxCounterComponent {
     @Input() start = 1;

@@ -2,7 +2,8 @@ import {Component, EventEmitter, Input} from '@angular/core';
 
 @Component({
     selector: 'ngx-show-more',
-    templateUrl: 'ngx-show-more.component.html'
+    templateUrl: 'ngx-show-more.component.html',
+    standalone: false
 })
 export class NgxShowMoreComponent {
     public moreResults: Boolean = false;

@@ -3,7 +3,8 @@ import {EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'ngx-pagination',
-    templateUrl: 'ngx-pagination.component.html'
+    templateUrl: 'ngx-pagination.component.html',
+    standalone: false
 })
 export class NgxPaginationComponent implements OnChanges {
 

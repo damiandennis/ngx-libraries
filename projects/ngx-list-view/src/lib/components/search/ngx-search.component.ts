@@ -18,7 +18,8 @@ import {debounceTime} from 'rxjs/operators';
         a {
             cursor: pointer;
         }
-    `]
+    `],
+    standalone: false
 })
 export class NgxSearchComponent implements OnInit {
 

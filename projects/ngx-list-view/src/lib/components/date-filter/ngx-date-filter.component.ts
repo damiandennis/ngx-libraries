@@ -1,9 +1,10 @@
 import {Component, Input, EventEmitter, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'ngx-date-filter',
-  templateUrl: 'ngx-date-filter.component.html',
-  styleUrls: ['ngx-date-filter.component.scss']
+    selector: 'ngx-date-filter',
+    templateUrl: 'ngx-date-filter.component.html',
+    styleUrls: ['ngx-date-filter.component.scss'],
+    standalone: false
 })
 export class NgxDateFilterComponent implements OnInit {
 

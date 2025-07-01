@@ -11,7 +11,8 @@ import {SelectAbstract} from "../../select.abstract";
             useExisting: forwardRef(() => NgxSearchOneComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class NgxSearchOneComponent extends SelectAbstract implements ControlValueAccessor {
 

@@ -3,7 +3,8 @@ import {Input} from '@angular/core';
 
 @Component({
     selector: 'ngx-not-found',
-    templateUrl: 'ngx-not-found.component.html'
+    templateUrl: 'ngx-not-found.component.html',
+    standalone: false
 })
 export class NgxNotFoundComponent {
     @Input() classes: Object = 'alert alert-warning text-center';

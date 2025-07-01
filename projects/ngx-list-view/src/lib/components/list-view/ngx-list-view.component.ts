@@ -40,9 +40,9 @@ import {NgxDateFilterComponent} from '../date-filter/ngx-date-filter.component';
  *
  */
 @Component({
-  selector: 'ngx-list-view',
-  templateUrl: 'ngx-list-view.component.html',
-
+    selector: 'ngx-list-view',
+    templateUrl: 'ngx-list-view.component.html',
+    standalone: false
 })
 export class NgxListViewComponent implements OnInit, AfterContentInit {
 
