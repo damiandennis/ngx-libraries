@@ -4,7 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {BaseModel} from '../models/base.model';
 import {Observable} from 'rxjs';
 import {AuthRequestInterface} from '../interfaces/auth-request.interface';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
 @Injectable({

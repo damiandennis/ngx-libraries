@@ -6,24 +6,17 @@ import { NgxListViewModule } from 'projects/ngx-list-view/src/public_api';
 import { NgxSelectViewModule } from 'projects/ngx-select-view/src/public_api';
 import { AccordionModule } from 'projects/ngx-simple-accordion/src/public_api';
 import { NgxToastnModule } from 'projects/ngx-toastn/src/public_api';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { fakeBackendProvider } from './interceptors/fake-backend-http.interceptor';
 import { FormsModule } from '@angular/forms';
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    NgxListViewModule,
-    NgxSelectViewModule,
-    AccordionModule,
-    NgxToastnModule,
-    FormsModule
-  ],
-  providers: [fakeBackendProvider],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        NgxListViewModule,
+        NgxSelectViewModule,
+        AccordionModule,
+        NgxToastnModule,
+        FormsModule], providers: [fakeBackendProvider, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

@@ -3,7 +3,7 @@ import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {BaseModel} from '../models/base.model';
 import isJsObject from '../utils/is.js.object';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Injectable()
 export abstract class EndPointService {
