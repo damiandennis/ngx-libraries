@@ -1,3 +1,5 @@
-<div *ngIf="moreResults" class="text-center m-t-md clearfix">
+@if (moreResults) {
+  <div class="text-center m-t-md clearfix">
     <button (click)="loadMore()" class="btn-grey btn">Show more</button>
-</div>
+  </div>
+}

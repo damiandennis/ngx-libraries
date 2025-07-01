@@ -1,3 +1,5 @@
-<div *ngIf="show" [ngClass]="classes">
+@if (show) {
+  <div [ngClass]="classes">
     <ng-content></ng-content>
-</div>
+  </div>
+}

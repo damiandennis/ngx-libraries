@@ -1,15 +1,15 @@
-<ng-template [ngIf]="isCustom">
-    <ng-content></ng-content>
-</ng-template>
-<ng-template [ngIf]="!isCustom">
-    <div class="form-group">
-        <a (click)="clearSearchTerm(true)" class="search-clear">
-            <i class="fa fa-times fa-1x"></i>
-        </a>
-        <input #inputSearchRef
-               type="text"
-               [ngClass]="classes"
-               [placeholder]="placeholder"
-               [formControl]="searchInputControl" />
+@if (isCustom) {
+  <ng-content></ng-content>
+}
+@if (!isCustom) {
+  <div class="form-group">
+    <a (click)="clearSearchTerm(true)" class="search-clear">
+      <i class="fa fa-times fa-1x"></i>
+    </a>
+    <input #inputSearchRef
+      type="text"
+      [ngClass]="classes"
+      [placeholder]="placeholder"
+      [formControl]="searchInputControl" />
     </div>
-</ng-template>
+  }

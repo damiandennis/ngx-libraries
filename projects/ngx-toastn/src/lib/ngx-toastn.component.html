@@ -1,3 +1,5 @@
 <div id="toasty" [ngClass]="[position]">
-  <ngx-toast *ngFor="let toast of toasts" [toast]="toast" (closeToast)="closeToast(toast)"></ngx-toast>
+  @for (toast of toasts; track toast) {
+    <ngx-toast [toast]="toast" (closeToast)="closeToast(toast)"></ngx-toast>
+  }
 </div>
